@@ -5,6 +5,7 @@ body {
 
 .container {
     display: flex;
+    max-width: 1440px;
     width: 50%;
     margin: auto;
     margin-top: 10rem;
@@ -93,5 +94,6 @@ button {
     .container {
         display: flex;
         flex-direction: column;
+        width: 375px;
     }
 }
