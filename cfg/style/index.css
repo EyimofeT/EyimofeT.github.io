@@ -8,9 +8,11 @@ body {
     max-width: 1440px;
     width: 50%;
     margin: auto;
-    margin-top: 10rem;
+    margin-top: 8rem;
     /* justify-content: center;
     align-items: center; */
+    
+    /* border: 2px solid black; */
 
 }
 
@@ -18,19 +20,37 @@ body {
     /* border: 2px solid red; */
     padding-top: 2rem;
     padding-bottom: 2rem;
+   
 
 }
 
+@font-face {
+    font-family: lexenddecca;
+    src: url(https://fonts.google.com/specimen/Lexend+Deca);
+}
+@font-face {
+    font-family: bigshouldersdispplay;
+    src: url(https://fonts.google.com/specimen/Big+Shoulders+Display);
+}
+
+
 .text p {
-    color: hsla(0, 0%, 100%, 0.75)
+    color: hsla(0, 0%, 100%, 0.75);
+    /* font-family: [Lexend Deca](https://fonts.google.com/specimen/Lexend+Deca); */
+    font-family: 'lexenddecca';
+    font-weight: 400;
 }
 
 .text h2 {
-    color: hsl(0, 0%, 95%)
+    color: hsl(0, 0%, 95%);
+    /* Family: [Big Shoulders Display](https://fonts.google.com/specimen/Big+Shoulders+Display) */
+font-weight: 700;
+font-family: 'bigshouldersdispplay';
 }
 
 .one {
     background-color: hsl(31, 77%, 52%);
+    border-radius: 15px 0px 0px 15px;
 }
 
 .one button {
@@ -57,6 +77,7 @@ body {
 
 .three {
     background-color: hsl(179, 100%, 13%);
+    border-radius: 0px 15px 15px 0px;
 }
 
 .three button {
@@ -88,9 +109,13 @@ button {
     display: inline-block;
     font-size: 16px;
     border-radius: 50px;
+    margin-top: 2rem;
+}
+button:hover{
+    cursor: pointer;
 }
 
-@media  (max-width: 375px){
+@media (max-width: 375px) {
     .container {
         display: flex;
         flex-direction: column;
