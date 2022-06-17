@@ -151,6 +151,9 @@ input:focus{
     color: white;
     font-size: 12px;
 }
+/* .error {
+    margin-top: -1em;
+} */
 
 @media (max-width: 500px) {
     .container {

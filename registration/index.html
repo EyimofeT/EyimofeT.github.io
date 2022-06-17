@@ -8,7 +8,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" type="image/x-icon" href="./Registration-form/images/favicon-32x32.png">
-    <!-- <script defer src="script.js"></script> -->
+    <script defer src="script.js"></script>
 </head>
 
 <body>
@@ -27,14 +27,15 @@
             <div class="right-bottom">
                 <form id="form" action="#">
                     <div class="inputs">
-                        <input type="text" id="fname" name="fname" placeholder="First Name" required>
+                        <input type="text" id="fname" name="fname" placeholder="First Name" >
                         <div><p id="fname-error"></p></div>
-                        <input type="text" id="lname" name="lname" placeholder="Last Name" required>
-                        <div id="lname-error"><p></p></div>
-                        <input type="email" id="email" name="email" placeholder="Email" required>
-                        <div id="email-error"><p></p></div>
-                        <input type="password" id="pass" name="pass" placeholder="Password" required>
-                        <div id="pass-error"><p></p></div>
+                        <input type="text" id="lname" name="lname" placeholder="Last Name" >
+                        <div><p id="lname-error"></p></div>
+                        <input type="email" id="email" name="email" placeholder="Email" >
+                        <div><p id="email-error"></p></div>
+                        <input type="password" id="pass" name="pass" placeholder="Password" >
+                        <div class="error" id="pass-error"></div>
+                        
                         <!-- <div class="terms">
                             
                             <div class="right">
