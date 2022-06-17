@@ -1,0 +1,227 @@
+body {
+    /* background-color: white; */
+    /* padding: -5em; */
+    margin: 0;
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+
+}
+
+.padding {
+    padding: 2rem 3rem;
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(https://fonts.google.com/specimen/Poppins);
+}
+
+@font-face {
+    font-family: OpenSans;
+    src: url(https://fonts.google.com/specimen/Open+Sans);
+}
+
+h1 {
+    font-family: Poppins;
+    color: hsl(192, 100%, 9%);
+    font-weight: 700;
+}
+
+p {
+    font-family: OpenSans;
+    color: hsl(192, 100%, 9%);
+}
+
+.container {}
+
+.landing {
+    padding: 2rem 3rem;
+    background: hsl(193, 100%, 96%) url('Huddle-landing-page-Design/images/bg-hero-desktop.svg') no-repeat;
+    /* display: flex; */
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.nav-bar button {
+    background-color: white;
+    /* Green */
+    border: none;
+    color: black;
+    padding: 15px 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-bar button:hover {
+    cursor: pointer;
+    color: hsl(191, 6%, 49%);
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container .landing .card {
+    display: flex;
+    /* margin-top: 2rem; */
+    /* height: 500px; */
+   margin: 2rem 0;
+   /* border: 2px solid red; */
+    
+
+}
+
+.container .landing .card .card-left {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 2px solid yellow; */
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.container .landing .card .card-left button {
+    background-color: hsl(322, 100%, 66%);
+    /* Green */
+    border: none;
+    color: white;
+    width: 60%;
+    padding: 15px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    /* font-size: 16px; */
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container .landing .card .card-left button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: hsl(322, 97%, 71%);
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+}
+
+.container .landing .card .card-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    /* border: 2px solid red; */
+}
+
+.container .landing .card .card-right img {
+    width: 100%;
+}
+
+
+.container .card-display{
+    /* background-color: red; */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    /* background-color: hsl(193, 100%, 96%); */
+    background-color: white;
+}
+
+.container .card-display .card{
+    display: flex;
+    /* border: 2px solid yellow; */
+    width: 80%;
+    margin: 5rem auto;
+    box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
+    background-color: white;
+    
+}
+.container .card-display .card .text{
+    width: 50%;
+    /* padding: 2rem 1rem; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 4em;
+    padding-right: 4em;
+    /* border: 2px solid blue; */
+}
+.container .card-display .card .image{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container .card-display .card .image img{
+    width: 100%;
+}
+
+
+@media (max-width: 500px) {
+    body {
+        
+        margin: 0;
+        overflow-wrap: break-word;
+        font-family: 'Poppins';
+    
+    }
+    .nav-bar .logo{
+        width: 50%;
+        /* border: 2px solid yellow; */
+    }
+    .nav-bar .logo img{
+        width: 100%;
+    }
+    .nav-bar .logo-button{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        /* border: 2px solid red; */
+        
+    }
+    .nav-bar button{
+        padding: 10px 12px;
+    }
+    .container .landing .card {
+        display: flex;
+        /* margin-top: 2rem; */
+        flex-direction: column;
+
+    }
+
+    .container .landing .card .card-left {
+        width: 100%;
+        text-align: center;
+        padding-left: 0rem;
+        padding-right: 0rem;
+        margin-bottom: 1rem ;
+    }
+
+    .container .landing .card .card-left button {
+        margin: 0 auto;
+    }
+
+    .container .landing .card .card-right {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .container .card-display .card{
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1rem;
+    }
+    .container .card-display .card .text{
+        text-align: center;
+        padding: 0em;
+        width: 100%;
+    }
+    .container .card-display .card .image{
+        width: 100%;
+    }
+}
