@@ -21,7 +21,7 @@ body {
     src: url(https://fonts.google.com/specimen/Open+Sans);
 }
 
-h1 {
+h1,h2 {
     font-family: Poppins;
     color: hsl(192, 100%, 9%);
     font-weight: 700;
@@ -216,6 +216,11 @@ p {
     flex-direction: column-reverse;
     padding: 1rem;
     }
+    .container .card-display .rev{
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        }
     .container .card-display .card .text{
         text-align: center;
         padding: 0em;
