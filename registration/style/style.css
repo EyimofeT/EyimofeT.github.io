@@ -1,6 +1,10 @@
 body {
-    background-image: url("./Registration-form/images/bg-intro-desktop.png");
-    background-color: rgb(214, 119, 135);
+    /* background-image: url("./Registration-form/images/bg-intro-desktop.png");
+    background-color: ; #C9CACA */
+    position: relative;
+    margin-bottom: -20px;
+    background:rgb(214, 119, 135)  url('Registration-form/images/bg-intro-desktop') no-repeat;
+
     /* display: flex;
     flex-direction: column;
     justify-self: center; */
