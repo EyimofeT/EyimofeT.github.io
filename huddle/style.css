@@ -32,6 +32,34 @@ p {
     color: hsl(192, 100%, 9%);
 }
 
+/* .loader {
+
+    margin: auto;
+  
+    border: 20px solid #EAF0F6;
+  
+    border-radius: 50%;
+  
+    border-top: 20px solid #FF7A59;
+  
+    width: 200px;
+  
+    height: 200px;
+  
+    animation: spinner 4s linear infinite;
+  
+  }
+  
+   
+  
+  @keyframes spinner {
+  
+    0% { transform: rotate(0deg); }
+  
+    100% { transform: rotate(360deg); }
+  
+  } */
+
 .container {}
 
 .landing {
@@ -42,9 +70,22 @@ p {
 
 .nav-bar {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /* flex-direction: row;
+    justify-content: space-between; */
 }
+.nav-bar .logo{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    /* border: 2px solid red; */
+    }
+    .nav-bar .logo-button{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
 
 .nav-bar button {
     background-color: white;
@@ -140,6 +181,7 @@ p {
     box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2), 0 8px 22px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
     border-radius: 10px;
+    padding: 2rem 2rem;
     
 }
 .container .card-display .card .text{
@@ -325,6 +367,27 @@ margin-right: 1em;
         font-family: 'Poppins';
     
     }
+    /* .nav-bar {
+
+    } */
+    .nav-bar .logo{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    /* border: 2px solid red; */
+    }
+    .nav-bar .logo-button{
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+    }
+    .landing {
+        /* padding: 2rem 3rem; */
+        background: hsl(193, 100%, 96%) url('Huddle-landing-page-Design/images/bg-hero-mobile.svg') no-repeat;
+        /* display: flex; */
+    }
     .nav-bar .logo{
         width: 50%;
         /* border: 2px solid yellow; */
@@ -347,6 +410,7 @@ margin-right: 1em;
         display: flex;
         /* margin-top: 2rem; */
         flex-direction: column;
+        /* padding: 20rem 2rem; */
 
     }
 
