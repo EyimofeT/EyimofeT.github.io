@@ -1,114 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tuoyo-Clifford Eyimofe - Backend Engineer</title>
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #121212;
-            color: #f0f0f0;
-        }
-        .container {
-            width: 90%;
-            max-width: 800px;
-            margin: 50px auto;
-            background: #1e1e1e;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        h1 {
-            color: #4db5ff;
-            text-align: center;
-        }
-        h2 {
-            color: #78c1ff;
-            border-bottom: 2px solid #78c1ff;
-            padding-bottom: 5px;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        ul li {
-            background: #262626;
-            margin: 8px 0;
-            padding: 12px;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-        .contact {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .contact a {
-            color: #4db5ff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuoyo-Clifford Eyimofe | Backend Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #0f172a 0%, #1e293b 100%);
+      color: #f1f1f1;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 20px;
+    }
+    .intro {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    h1 {
+      font-size: 3.5em;
+      font-weight: 700;
+      color: #fff;
+    }
+    p.intro-text {
+      font-size: 1.2em;
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    .links {
+      margin-top: 20px;
+    }
+    .links a {
+      margin: 0 15px;
+      color: #0ea5e9;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    .links a:hover { color: #22d3ee; }
+    h2 {
+      color: #0ea5e9;
+      font-size: 2em;
+      margin-top: 60px;
+      text-align: center;
+    }
+    .carousel-container {
+      overflow: hidden;
+      position: relative;
+      margin-top: 40px;
+    }
+    .carousel {
+      display: flex;
+      padding-bottom: 20px;
+      width: max-content;
+      animation: scroll-carousel 30s linear infinite;
+    }
+    .carousel-container:hover .carousel {
+      animation-play-state: paused;
+    }
+    @keyframes scroll-carousel {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-50% - 15px)); }
+    }
+    .carousel-inner {
+      display: flex;
+      width: fit-content;
+      gap: 40px;
+    }
+    .project-card {
+      flex: none;
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-width: 300px;
+      max-width: 400px;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 15px;
+    }
+    .project-card h3 {
+      color: #22d3ee;
+      font-size: 1.4em;
+      margin-bottom: 10px;
+    }
+    .project-card p {
+      color: #cbd5e1;
+      font-size: 1em;
+    }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 30px;
+    }
+    .tag {
+      background: #0ea5e9;
+      color: #0f172a;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95em;
+    }
+    .about {
+      max-width: 800px;
+      margin: 80px auto;
+      text-align: center;
+      line-height: 1.8;
+      color: #cbd5e1;
+    }
+    .about h2 {
+      margin-bottom: 20px;
+    }
+    .about p {
+      font-size: 1.05em;
+    }
+    .timeline {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .timeline h2 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .timeline-item {
+      border-left: 4px solid #22d3ee;
+      padding-left: 20px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      background: #22d3ee;
+      border-radius: 50%;
+    }
+    .timeline-item h3 {
+      font-size: 1.2em;
+      margin-bottom: 6px;
+    }
+    .timeline-item span {
+      font-size: 0.9em;
+      color: #94a3b8;
+    }
+    .timeline-item p {
+      margin-top: 10px;
+      color: #cbd5e1;
+    }
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #64748b;
+    }
+  </style>
+<link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828506.png" type="image/png">
+  <meta name="description" content="Portfolio site of Tuoyo-Clifford Eyimofe, a backend engineer specializing in Node.js, microservices, and secure API infrastructure.">
+  <meta property="og:title" content="Tuoyo-Clifford Eyimofe Portfolio">
+  <meta property="og:description" content="Discover Tuoyo's backend projects, tech stack, and experience across fintech platforms.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tuoyoe.dev">
+  <meta property="og:image" content="https://source.unsplash.com/600x400/?technology,developer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Tuoyo-Clifford Eyimofe</h1>
-        <h2>Backend Engineer | Cloud Practitioner | Software Architect</h2>
-        <p>I am a highly skilled backend engineer with expertise in building scalable backend infrastructures, integrating payment systems, and ensuring security compliance.</p>
+  <div class="container">
+    <section class="intro">
+      <h1>Tuoyo-Clifford Eyimofe</h1>
+      <p class="intro-text">
+        I craft resilient backend systems with a focus on performance, security, and scalable architecture.
+        My specialty lies in building fintech platforms, microservices, and cloud-powered APIs.
+      </p>
+      <a href="/Tuoyo-Clifford-Eyimofe_CV.pdf" download style="display:inline-block; background:#22d3ee; color:#0f172a; font-weight:bold; padding:10px 18px; border-radius:999px; text-decoration:none; margin-top:10px;">Download CV</a>
+      <div class="links">
+        <a href="mailto:tuoyocliffordeyimofe@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://linkedin.com/in/tuoyoceyimofe" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/EyimofeT" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      </div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script>AOS.init({ once: true, duration: 800 });</script>
 
-        <h2>Skills & Expertise</h2>
-        <ul>
-            <li>Node.js, JavaScript, Express.js</li>
-            <li>Python, PostgreSQL, Prisma ORM, MySQL</li>
-            <li>AWS (EBS, EC2, Elastic IP), Azure (App Service, Virtual Machines)</li>
-            <li>RabbitMQ, Google Drive API, ZeptoMail</li>
-            <li>RESTful APIs, Microservices Architecture</li>
-        </ul>
-
-        <h2>Professional Experience</h2>
-        <p><strong>Stackivy, Ozypay, Speedpay – Backend Engineer</strong></p>
-        <ul>
-            <li>Engineered robust backend infrastructures ensuring security and scalability.</li>
-            <li>Integrated payment functionalities and optimized transaction processes.</li>
-        </ul>
-
-        <h2>Projects</h2>
-        <p><strong>Ardilla - Smart Savings Application</strong></p>
-        <ul>
-            <li>A fintech solution offering users flexible savings plans.</li>
-            <li>Developed secure APIs for managing user savings and transactions.</li>
-        </ul>
-
-        <p><strong>Hargon - Loan & Bill Payment Platform</strong></p>
-        <ul>
-            <li>Developed a robust backend for secure loan applications and bill payments.</li>
-            <li>Integrated credit scoring algorithms and payment processing features.</li>
-        </ul>
-
-        <p><strong>SwiftLuxe - Virtual Dollar Cards & Bill Payments (In Development)</strong></p>
-        <ul>
-            <li>Developing a backend solution for virtual dollar cards and seamless bill payments.</li>
-            <li>Ensuring high-security standards for international transactions.</li>
-        </ul>
-
-        <p><strong>Other Notable Projects</strong></p>
-        <ul>
-            <li>Speedpay API - Seamless financial transactions and payment solutions.</li>
-            <li>Ozypay - A secure and efficient digital payment gateway.</li>
-        </ul>
-
-        <h2>Certifications</h2>
-        <ul>
-            <li>Microsoft Certified Professional</li>
-            <li>AWS Cloud Practitioner</li>
-        </ul>
-
-        <h2>Contact</h2>
-        <p class="contact">Email: <a href="mailto:tuoyocliffordeyimofe@gmail.com">tuoyocliffordeyimofe@gmail.com</a></p>
-        <p class="contact">LinkedIn: <a href="https://linkedin.com/in/tuoyoceyimofe">linkedin.com/in/tuoyoceyimofe</a></p>
-        <p class="contact">GitHub: <a href="https://github.com/eyimofeT">github.com/eyimofeT</a></p>
+<section class="metrics" style="margin: 60px auto; text-align:center;">
+  <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px;">
+    <div style="min-width:150px;">
+      <h2 style="color:#22d3ee; font-size:2.2em;">5+</h2>
+      <p style="color:#94a3b8;">Years Experience</p>
     </div>
+    <div style="min-width:150px;">
+      <h2 style="color:#22d3ee; font-size:2.2em;">12+</h2>
+      <p style="color:#94a3b8;">Projects Delivered</p>
+    </div>
+    
+  </div>
+</section>
+
+
+      <h2>About Me</h2>
+      <p>
+        I'm a seasoned backend engineer with years of experience architecting and scaling software systems used by thousands. My work focuses on clean architecture, high-availability microservices, and bulletproof security practices. I thrive when solving problems at scale and collaborating across product, engineering, and design teams.
+      </p>
+    </section>
+
+    <section class="timeline">
+      <h2>Experience Timeline</h2>
+      <div class="timeline-item">
+        <h3>Senior Backend Engineer – Stackivy</h3>
+        <span>2023 – Present</span>
+        <p>Engineered secure financial services infrastructure using NestJS, PostgreSQL, and RabbitMQ, supporting over 200k monthly users.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Software Engineer – Payship</h3>
+        <span>2025</span>
+        <p>Led backend development of virtual card APIs and KYC compliance integrations. Introduced caching systems that cut API latency by 60%.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Software Engineer – OmniRetail</h3>
+        <span>2025</span>
+        <p>Developed reporting pipelines and analytics dashboards for B2B retail insights using Postgres, Docker, and Redis.</p>
+      </div>
+    <section class="cta" style="text-align:center; margin-top: 80px;">
+  <h2 style="color:#facc15; font-size:2.5em; margin-bottom: 20px;">Let’s Build Something Exceptional</h2>
+  <p style="font-size: 1.1em; color:#94a3b8; max-width:700px; margin: 0 auto 30px auto;">
+    Whether it’s fintech, cloud architecture, or scaling APIs, I bring passion and precision to every project. Let’s connect and build solutions that scale.
+  </p>
+  <a href="mailto:tuoyocliffordeyimofe@gmail.com" style="background:#0ea5e9; color:#0f172a; font-weight:bold; padding:12px 24px; border-radius:999px; text-decoration:none; display:inline-block; margin-top:10px;">Get in Touch</a>
+</section>
+
+
+    <div class="carousel-container">
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="project-card" data-aos="fade-up">
+            <!-- <!-- <img src="https://source.unsplash.com/400x250/?enterprise,code" alt="SpeedPay" /> --> -->
+            <h3>SpeedPay</h3>
+            <p>Created an enterprise-grade wallet backend infrastructure for merchant transactions. Implemented OTP-based security, customer onboarding flows, and account verification mechanisms.</p>
+          </div>
+          <div class="project-card">
+            <img src="https://source.unsplash.com/400x250/?fintech,server" alt="Ozypay" />
+            <h3>Ozypay</h3>
+            <p>Developed fintech backend services that powered savings wallets and automated rewards. Integrated third-party services with secure REST APIs and managed server deployment with CI/CD pipelines.</p>
+          </div>
+          <div class="project-card">
+            <img src="https://source.unsplash.com/400x250/?cloud,platform" alt="SaaS Booking API" />
+            <h3>SaaS Booking API</h3>
+            <p>Architected a high-availability scheduling API with Google Calendar integration for a SaaS platform. Enabled dynamic slot management, timezone conversion, and booking conflict resolution.</p>
+          </div>
+          <div class="project-card">
+  <img src="https://source.unsplash.com/400x250/?api,server" alt="Stackivy API" />
+  <h3>Stackivy</h3>
+  <p>Built a robust microservices backend handling thousands of financial transactions daily. Integrated fraud detection, RabbitMQ messaging, and PostgreSQL with encrypted audit trails.</p>
+</div>
+<div class="project-card">
+  <img src="https://source.unsplash.com/400x250/?finance,mobile" alt="Payship App" />
+  <h3>Payship</h3>
+  <p>Engineered the backend for a virtual dollar card system, integrated multiple payment providers, and reduced system crashes by 80% through smart caching and async task workers.</p>
+</div>
+<div class="project-card">
+  <img src="https://source.unsplash.com/400x250/?analytics,dashboard" alt="OmniRetail" />
+  <h3>OmniRetail</h3>
+  <p>Designed analytics-driven dashboards using PostgreSQL. Enabled real-time data insights through optimized schemas and role-based access with minimal latency.</p>
+</div>
+<!-- Cloned for infinite loop -->
+<div class="project-card">
+  <img src="https://source.unsplash.com/400x250/?api,server" alt="Stackivy API Clone" />
+  <h3>Stackivy</h3>
+  <p>Built a robust microservices backend handling thousands of financial transactions daily. Integrated fraud detection, RabbitMQ messaging, and PostgreSQL with encrypted audit trails.</p>
+</div>
+<div class="project-card">
+  <img src="https://source.unsplash.com/400x250/?finance,mobile" alt="Payship App Clone" />
+  <h3>Payship</h3>
+  <p>Engineered the backend for a virtual dollar card system, integrated multiple payment providers, and reduced system crashes by 80% through smart caching and async task workers.</p>
+</div>
+<div class="project-card">
+  <img src="https://source.unsplash.com/400x250/?analytics,dashboard" alt="OmniRetail Clone" />
+  <h3>OmniRetail</h3>
+  <p>Designed analytics-driven dashboards using PostgreSQL. Enabled real-time data insights through optimized schemas and role-based access with minimal latency.</p>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Tech Stack</h2>
+    <div class="skills">
+      <span class="tag">Node.js</span>
+      <span class="tag">NestJS</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">MongoDB</span>
+      <span class="tag">RabbitMQ</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Redis</span>
+      <span class="tag">Docker</span>
+      <span class="tag">AWS</span>
+      <span class="tag">CI/CD</span>
+      <span class="tag">Microservices</span>
+    </div>
+  </div>
+  <section class="contact" style="text-align:center; margin:80px auto;">
+  <h2 style="color:#0ea5e9; font-size:2em;">Let’s Connect</h2>
+  <p style="color:#94a3b8; font-size:1em; margin:10px auto 20px auto; max-width:600px;">
+    Have a role in mind or want to collaborate on something amazing? Reach out — I'm open to exciting opportunities.
+  </p>
+  <a href="mailto:tuoyocliffordeyimofe@gmail.com" style="display:inline-block; background:#22d3ee; color:#0f172a; font-weight:600; padding:12px 24px; border-radius:999px; text-decoration:none;">Send an Email</a>
+</section>
+
+<footer>
+    Designed & built with ❤️ by Tuoyo-Clifford Eyimofe · 2025
+  </footer>
 </body>
 </html>
