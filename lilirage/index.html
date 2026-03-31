@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Estates</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+/* body{background:linear-gradient(135deg,#0f172a,#1e293b,#334155);color:#e5e7eb} */
+body{background:linear-gradient(135deg,#eef2f7,#f9f9f9);color:#333}
+
+header{position:fixed;width:100%;top:0;background:rgba(10,31,68,0.85);backdrop-filter:blur(10px);color:#fff;padding:5px 30px;z-index:1000;display:flex;justify-content:space-between;align-items:center}
+header nav{display:flex;align-items:center;gap:25px}
+header nav a{color:#fff;text-decoration:none;margin:0;white-space:nowrap;font-weight:500;letter-spacing:0.3px}
+header nav a:hover{color:#c9a227}
+
+.logo img {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.dropdown{position:relative}
+.dropdown-content{display:none;position:absolute;right:0;background:#fff;color:#333;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.1)}
+.dropdown:hover .dropdown-content{display:block}
+.dropdown-content a{display:block;padding:12px 15px;text-decoration:none;color:#333}
+
+.hero{height:100vh;background:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994') center/cover no-repeat;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;text-align:center}
+.hero h1{font-size:3.5rem}
+.hero button{margin-top:20px;padding:12px 25px;border:none;border-radius:25px;background:#c9a227;color:#fff;cursor:pointer}
+
+section{padding:40px 30px}
+.container{max-width:1200px;margin:auto}
+
+/* OWNERS */
+/* .carousel{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth}
+.carousel::-webkit-scrollbar{display:none} */
+/* .owner-card{min-width:250px;background:#fff;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.08);padding:15px;text-align:center}
+.owner-card img{width:100%;border-radius:12px} */
+
+.carousel{
+  display:flex;
+  gap:20px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding:20px;
+  scroll-snap-type:x mandatory;
+}
+
+/* hide scrollbar */
+.carousel::-webkit-scrollbar{
+  display:none;
+}
+
+/* each card snaps to center */
+.owner-card{
+  scroll-snap-align:center;
+}
+.owner-card{
+  min-width:260px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.1);
+  overflow:hidden;
+  transition:0.3s ease;
+  text-align:center;
+}
+
+.owner-card:hover{
+  transform:translateY(-8px);
+}
+
+/* IMAGE AS CARD */
+.owner-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  border-top-left-radius:18px;
+  border-top-right-radius:18px;
+}
+
+/* TEXT CONTENT */
+.owner-card h3{
+  margin-top:12px;
+  font-size:1.1rem;
+}
+
+.owner-card p{
+  margin-bottom:15px;
+  color:#777;
+  font-size:0.9rem;
+}
+
+/* PROPERTIES */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
+.card{background:#fff;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.08);padding:15px;cursor:pointer;transition:0.3s}
+.card:hover{transform:translateY(-8px)}
+.card img{width:100%;border-radius:12px}
+
+/* MODAL FIXED */
+.modal{position:fixed;top:0;left:0;width:100%;height:100%;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);z-index:2000}
+.modal-content{background:#fff;border-radius:20px;max-width:700px;width:90%;max-height:90vh;overflow-y:auto;padding:20px;position:relative}
+.close{position:sticky;top:0;float:right;font-size:22px;cursor:pointer;background:#fff;padding:5px 10px;border-radius:50%}
+
+/* .gallery{position:relative}
+.gallery img{width:100%;border-radius:12px} */
+/* .gallery-controls{position:absolute;top:50%;width:100%;display:flex;justify-content:space-between}
+.gallery-controls button{background:#0008;color:#fff;border:none;padding:8px 12px;cursor:pointer} */
+
+.gallery{
+  display:flex;
+  justify-content:center;
+  margin:20px 0;
+  position:relative;
+}
+
+.gallery img{
+  width:100%;
+  max-width:500px;        /* 👈 controls card size */
+  height:300px;           /* 👈 fixed card height */
+  object-fit:cover;       /* 👈 makes it look clean */
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.gallery-controls{
+  position:absolute;
+  top:50%;
+  width:100%;
+  max-width:500px;
+  left:50%;
+  transform:translate(-50%, -50%);
+  display:flex;
+  justify-content:space-between;
+  pointer-events:none; /* 👈 allows clicks only on buttons */
+}
+
+.gallery-controls button{
+  pointer-events:auto;
+  background:#0008;
+  color:#fff;
+  border:none;
+  padding:8px 12px;
+  cursor:pointer;
+  border-radius:50%;
+}
+
+.badge{background:linear-gradient(135deg,#0a1f44,#162e6e);color:#fff;padding:30px;border-radius:16px;text-align:center}
+
+.btn{margin-top:15px;padding:10px 15px;border:none;border-radius:20px;background:#c9a227;color:#fff;cursor:pointer}
+
+footer{text-align:center;padding:20px;background:#0a1f44;color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">
+  <img src="https://lh3.googleusercontent.com/d/1i4JgunQe6lmHM1Qz09W4iSG3_YqgIbNY" alt="Luxury Estates Logo">
+</div>
+<nav>
+<a href="#owners">Management</a>
+<a href="#properties">Projects</a>
+<div class="dropdown">
+<a href="#">Contact ▾</a>
+<div class="dropdown-content">
+<a href="tel:+2349069900625">📞 Call</a>
+<a href="mailto:lilirealtyofficial@gmail.com">✉️ Email</a>
+<a href="https://wa.me/2349069900625">💬 WhatsApp</a>
+</div>
+</div>
+</nav>
+</header>
+
+<div class="hero">
+<h1>Find Your Location</h1>
+<button onclick="scrollToSection('properties')">View Projects</button>
+</div>
+
+<!-- OWNERS SECTION -->
+<section id="owners">
+<div class="container">
+<h2>Our Team</h2>
+<div class="carousel">
+<div class="owner-card"><img src="https://lh3.googleusercontent.com/d/15vfBi5fgeMCFi5WZ6gCMhRXjCkewLPFN"><h3>Queen Diana Adebayo</h3><p>Founder</p></div>
+<div class="owner-card"><img src="https://lh3.googleusercontent.com/d/1ZenRS9sPDtSclN8Ik7LZM9bSkEKmhtnv"><h3>Tomi Fakos</h3><p>In-House Legal Solicitor</p></div>
+</div>
+</div>
+</section>
+
+<section id="properties">
+<div class="container">
+<h2>Projects</h2>
+<div class="grid" id="propertyGrid"></div>
+</div>
+</section>
+
+<section id="registration">
+<div class="container">
+<h2>Company Registration</h2>
+<div class="badge">
+<p>CAC Registration No: RC 9257892</p>
+<p>LILI REALTY & DEVELOPMENT LTD</p>
+</div>
+</div>
+</section>
+
+<!-- MODAL -->
+<div class="modal" id="modal" onclick="outsideClick(event)">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">×</span>
+<h3 id="modalTitle"></h3>
+<p id="modalLocation"></p>
+
+<div class="gallery">
+<img id="galleryImage">
+<div class="gallery-controls">
+<button onclick="prevImage()">‹</button>
+<button onclick="nextImage()">›</button>
+</div>
+</div>
+
+<h4>Packages</h4>
+<ul id="modalPackages"></ul>
+
+<h4>Landmarks</h4>
+<ul id="modalPlans"></ul>
+
+<button class="btn" id="enquireBtn">Enquire on WhatsApp</button>
+</div>
+</div>
+
+<footer>
+<p>© 2026 Lily Realty</p>
+</footer>
+
+<script>
+const properties=[
+{
+name:"Foundation Living Estate ",
+location:"OLD BANK IFO - OGUN STATE",
+images:[
+"https://lh3.googleusercontent.com/d/1F5ZF3pzjvF0KhCL22xIVFfolZIC8n_kC",
+"https://lh3.googleusercontent.com/d/1gzyZCR_QLiyJjSk_Pa-evRZK8-XjCrl0",
+"https://lh3.googleusercontent.com/d/1PjkEZdBQ6zO3yK-7zddKWqANwOGbrK7z",
+],
+packages:["300sqm - ₦375,000","500sqm - ₦750,000",,"1000sqm - ₦1,500,000"],
+landmark:["Railway- Lagos - Ibadan ","Lagos - Abeokuta expressway "]
+},
+{
+name:"Bayfront Estate",
+location:"Ayetoro Bayeku Igbogbo, Ikorodu Lagos state",
+images:[
+"https://lh3.googleusercontent.com/d/13Q0B6np29-qFDZVAFaABJz5piUAUIunj",
+"https://lh3.googleusercontent.com/d/1De8r8_lRGisIIT0a_SCcQjMGBVjS8Oi6",
+"https://lh3.googleusercontent.com/d/1TZDpidIpYrEZd9CnEpm7AJVT3BEO8ewQ",
+
+],
+packages:["300sqm - ₦2,400,000","500sqm - ₦4,800,000",,"1000sqm - ₦9,600,000"],
+landmark:["Fashola Estate off igbogbo road","Bayeku ayetoro jetty"]
+}
+]
+
+const grid=document.getElementById('propertyGrid')
+properties.forEach((p,i)=>{
+const card=document.createElement('div')
+card.className='card'
+card.innerHTML=`<img src="${p.images[0]}"><h3>${p.name}</h3><p>${p.location}</p>`
+card.onclick=()=>openModal(i)
+grid.appendChild(card)
+})
+
+let currentIndex=0,currentProperty=0
+
+function openModal(index){
+currentProperty=index
+currentIndex=0
+const p=properties[index]
+document.getElementById('modal').style.display='flex'
+document.getElementById('modalTitle').innerText=p.name
+updateGallery()
+
+document.getElementById('modalLocation').innerText=p.location
+
+const pkg=document.getElementById('modalPackages')
+pkg.innerHTML=''
+p.packages.forEach(x=>pkg.innerHTML+=`<li>${x}</li>`)
+
+const plans=document.getElementById('modalPlans')
+plans.innerHTML=''
+p.landmark.forEach(x=>plans.innerHTML+=`<li>${x}</li>`)
+
+const msg=`Hello, I'm interested in ${p.name}`
+document.getElementById('enquireBtn').onclick=()=>{
+window.open(`https://wa.me/2348000000000?text=${encodeURIComponent(msg)}`)
+}
+}
+
+function closeModal(){document.getElementById('modal').style.display='none'}
+
+function outsideClick(e){
+if(e.target.id==='modal') closeModal()
+}
+
+function updateGallery(){
+const p=properties[currentProperty]
+document.getElementById('galleryImage').src=p.images[currentIndex]
+}
+
+function nextImage(){
+const p=properties[currentProperty]
+currentIndex=(currentIndex+1)%p.images.length
+updateGallery()
+}
+
+function prevImage(){
+const p=properties[currentProperty]
+currentIndex=(currentIndex-1+p.images.length)%p.images.length
+updateGallery()
+}
+
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+</script>
+
+</body>
+</html>
