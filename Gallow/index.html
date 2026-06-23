@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallow — Food & Drinks Menu</title>
+  <style>
+    :root{--bg:#0f1724;--card:#111827;--muted:#9ca3af;--accent:#ffcc00}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Segoe UI,Helvetica,Arial;background:linear-gradient(180deg,#061026 0%,#0b1220 100%);color:#e6eef8}
+    header{padding:28px 20px;text-align:center}
+    header h1{margin:0;font-size:28px;letter-spacing:1px}
+    .wrap{max-width:980px;margin:20px auto;padding:20px}
+    .tabs{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+    .tabs button{background:transparent;border:1px solid #223040;color:var(--muted);padding:8px 12px;border-radius:8px;cursor:pointer}
+    .tabs button.active{background:var(--accent);color:#111;font-weight:600;border-color:var(--accent)}
+    .card{background:rgba(255,255,255,0.03);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    table{width:100%;border-collapse:collapse}
+    thead th{font-size:13px;text-align:left;padding:10px 8px;color:var(--muted);border-bottom:1px dashed rgba(255,255,255,0.04)}
+    tbody td{padding:10px 8px;border-bottom:1px solid rgba(255,255,255,0.02)}
+    tbody tr:hover td{background:rgba(255,255,255,0.02)}
+    .price{font-weight:700;color:var(--accent);text-align:right}
+    .controls{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .search{flex:1}
+    input[type=search]{width:100%;padding:8px 10px;border-radius:8px;border:1px solid #21303f;background:transparent;color:inherit}
+    @media(min-width:720px){header h1{font-size:34px}}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Gallow — Food & Drinks</h1>
+    <p style="margin:6px 0 0;color:var(--muted);font-size:14px">Menu</p>
+  </header>
+
+  <main class="wrap">
+    <div class="tabs">
+      <button id="btnFood" class="active">Food</button>
+      <button id="btnDrinks">Drinks</button>
+    </div>
+
+    <div class="card">
+      <div class="controls">
+        <div class="search">
+          <input id="q" type="search" placeholder="Search items or prices" />
+        </div>
+        <div style="margin-left:12px;color:var(--muted);font-size:13px">Items: <span id="count">0</span></div>
+      </div>
+
+      <div id="tables">
+        <section id="foodSection">
+          <table id="foodTable">
+            <thead>
+              <tr><th>Food</th><th class="price">Price</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section id="drinksSection" style="display:none;margin-top:6px">
+          <table id="drinksTable">
+            <thead>
+              <tr><th>Drinks</th><th class="price">Price</th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Data object holding food and drinks separately
+    const menu = {
+      food: [
+        {name: 'NOODLES & EGG', price: '4000'},
+        {name: 'RICE & STEW', price: '4000'},
+        {name: 'FRIED CHICKEN', price: '3500'},
+        {name: 'FRIED TURKEY', price: '5000'},
+        {name: 'CHICKEN & CHIPS', price: '5500'},
+        {name: 'PEPPER SOUP', price: '4000'}
+      ],
+      drinks: [
+        {name:'CHARDONNAY FRANCIOS', price:'48000'},
+        {name:'BORDEAUX MERLOT', price:'25000'},
+        {name:'ERRAZURIZ RESERVA', price:'30000'},
+        {name:'PATA NEGRA', price:'40000'},
+        {name:'SPECIAL CUVEE SAVIGNON', price:'34000'},
+        {name:'BAILEYS THE ORIGINAL', price:'31000'},
+        {name:'MADAGASCAN VANILLA RUM', price:'16000'},
+        {name:'VINCO PACO', price:'34000'},
+        {name:'DISSARONNO ORIGINALE', price:'52000'},
+        {name:'JACK DANIELS', price:'36000'},
+        {name:'MARTELL COGNC', price:'80000'},
+        {name:'VODKA V ERY BERRRY', price:'31000'},
+        {name:'JACK DANIELS TENNESSE HONEY', price:'45000'},
+        {name:'FREIXENET', price:'65000'},
+        {name:'VSOP COURVOISIER', price:'150000'},
+        {name:'GRANTS TRIPLE WOOD', price:'24000'},
+        {name:'CIROC MANGO', price:'70000'},
+        {name:'AU VODKA BLUE RAPSBERRY', price:'100000'},
+        {name:'SHERI DANS', price:'60000'},
+        {name:'THREE BARRELS - VSOP', price:'50000'},
+        {name:'BARCADI CARTA BALANCA', price:'40000'},
+        {name:'HENNESSY VSOP', price:'25000'},
+        {name:'GRAND HARNIER LIQUER', price:'70000'},
+        {name:'PROSECCO VINO SPUMANTE', price:'40000'},
+        {name:'COINTREAU', price:'60000'},
+        {name:'GORDONS', price:'10000'},
+        {name:'JOHNNIE WALKER', price:'20000'},
+        {name:'DESPERADO', price:'1500'},
+        {name:'BULLET', price:'3000'},
+        {name:'HEINEKEN', price:'3000'},
+        {name:'BUDWEISER', price:'1500'},
+        {name:'GUINESS CAN', price:'1500'},
+        {name:'GOLD BERG', price:'1500'},
+        {name:'SMIRN OFF', price:'3000'},
+        {name:'FANTA', price:'1000'},
+        {name:'COKE', price:'1000'},
+        {name:'PEPSI', price:'1000'},
+        {name:'WATER', price:'1000'},
+        {name:'SHOTS', price:'1000 PER SHOT'}
+      ]
+    };
+
+    // DOM refs
+    const foodTbody = document.querySelector('#foodTable tbody');
+    const drinksTbody = document.querySelector('#drinksTable tbody');
+    const q = document.getElementById('q');
+    const count = document.getElementById('count');
+    const btnFood = document.getElementById('btnFood');
+    const btnDrinks = document.getElementById('btnDrinks');
+    const foodSection = document.getElementById('foodSection');
+    const drinksSection = document.getElementById('drinksSection');
+
+    function renderFood(filter=''){
+      foodTbody.innerHTML='';
+      const items = menu.food.filter(it => (it.name+it.price).toLowerCase().includes(filter.toLowerCase()));
+      items.forEach(it=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${it.name}</td><td class="price">${it.price}</td>`;
+        foodTbody.appendChild(tr);
+      });
+      count.textContent = items.length;
+    }
+
+    function renderDrinks(filter=''){
+      drinksTbody.innerHTML='';
+      const items = menu.drinks.filter(it => (it.name+it.price).toLowerCase().includes(filter.toLowerCase()));
+      items.forEach(it=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${it.name}</td><td class="price">${it.price}</td>`;
+        drinksTbody.appendChild(tr);
+      });
+      count.textContent = items.length;
+    }
+
+    // initial render
+    renderFood();
+
+    // events
+    btnFood.addEventListener('click', ()=>{btnFood.classList.add('active');btnDrinks.classList.remove('active');foodSection.style.display='block';drinksSection.style.display='none';renderFood(q.value)});
+    btnDrinks.addEventListener('click', ()=>{btnDrinks.classList.add('active');btnFood.classList.remove('active');foodSection.style.display='none';drinksSection.style.display='block';renderDrinks(q.value)});
+
+    q.addEventListener('input', ()=>{
+      if (btnFood.classList.contains('active')) renderFood(q.value); else renderDrinks(q.value);
+    });
+  </script>
+</body>
+</html>
